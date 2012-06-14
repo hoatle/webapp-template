@@ -1,0 +1,27 @@
+{
+  "name": "webapp-template",
+  "version": "0.0.1",
+  "description": "A web application template that manages the mapping and dispatching of action handlers with powerful APIs for your application",
+  "keywords": ["util", "functional", "server", "client", "browser", "router"],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hoatle/router.js.git"
+  },
+  "author": "Hoat Le <hoatlevan@gmail.com> (http://hoatle.net)",
+  "contributors"  : [],
+  "dependencies": {
+    "express": "2.5.9",
+    "jade": "0.26.1",
+    "winston": "0.5.11"
+  },
+  "devDependencies": {
+    "mocha": "1.0.1",
+    "should" : "0.6.1"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": "v0.6.x"
+  }
+}
