@@ -6,7 +6,7 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 
 + Make sure to have latest node installed (tested on 0.6.14, current latest: 0.6.19)
 
-+ Install node required modules for this app: ```npm install```
++ Install required node modules for this app: ```npm install```
 
 + Test this application: ```make test```
 
