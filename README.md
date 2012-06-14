@@ -1,6 +1,6 @@
 # webapp-template
 
-Web application structure template for backbone + requirejs + twitter bootstrap application running on nodejs server.
+Web application structure template for backbone + requirejs + twitter bootstrap running on nodejs server.
 
 ## Run the application
 
