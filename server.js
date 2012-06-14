@@ -16,18 +16,16 @@ app.configure(function () {
 
 
 app.configure('development', function () {
+  app.use(express.static(__dirname + '/webapp'));
   app.use(express.static(__dirname + '/test'));
   app.use(express.errorHandler({dumpExceptions: true, showStack: true}));
 });
 
 app.configure('production', function () {
+  app.use(express.static(__dirname + '/public'))
   winston.handleExceptions();
 });
 
-app.configure(function () {
-  app.use(express.static(__dirname + '/public'))
-});
-
-app.listen(3000)
+app.listen(3000);
 
 console.log('Server running at http://127.0.0.1:3000/');

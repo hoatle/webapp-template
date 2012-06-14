@@ -5,7 +5,7 @@
   "keywords": ["webapp-template", "web application"],
   "repository": {
     "type": "git",
-    "url": "git@github.com:hoatle/webapp-template.git"
+    "url": "git@github.com/hoatle/webapp-template.git"
   },
   "author": "Hoat Le <hoatlevan@gmail.com> (http://hoatle.net)",
   "contributors"  : [],
