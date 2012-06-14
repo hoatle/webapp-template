@@ -14,4 +14,4 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 
 + Access application: http://localhost:3000
 
-+ Access browser tests: http://localhost:3000/browsers
++ Access browser tests: http://localhost:3000/browser
