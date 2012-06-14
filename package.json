@@ -2,10 +2,10 @@
   "name": "webapp-template",
   "version": "0.0.1",
   "description": "A web application template that manages the mapping and dispatching of action handlers with powerful APIs for your application",
-  "keywords": ["util", "functional", "server", "client", "browser", "router"],
+  "keywords": ["webapp-template", "web application"],
   "repository": {
     "type": "git",
-    "url": "git://github.com/hoatle/router.js.git"
+    "url": "git@github.com:hoatle/webapp-template.git"
   },
   "author": "Hoat Le <hoatlevan@gmail.com> (http://hoatle.net)",
   "contributors"  : [],
