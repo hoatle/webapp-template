@@ -31,6 +31,11 @@ require.config({
   },
 
   shim: {
+
+    json2: {
+      exports: 'JSON'
+    },
+
     underscore: {
       exports: '_'
     },

@@ -7,9 +7,9 @@ define(
     'jquery',
     'underscore',
     'backbone',
-    'views/ApplicationView'
+    'controller/HelloWorldController'
   ],
-  function ($, _, Backbone, ApplicationView) {
+  function ($, _, Backbone, HelloWorldController) {
 
     var applicationView;
 
@@ -20,14 +20,10 @@ define(
 
       initialize: function (options) {
 
-        applicationView = new ApplicationView({
-          $container: $('body')
-        });
-
       },
 
       showDefault: function () {
-        applicationView.render();
+        HelloWorldController.index();
       },
 
 

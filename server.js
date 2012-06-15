@@ -15,13 +15,13 @@ app.configure(function () {
 });
 
 
-app.configure('development', function () {
+app.configure('dev', function () {
   app.use(express.static(__dirname + '/webapp'));
   app.use(express.static(__dirname + '/test'));
   app.use(express.errorHandler({dumpExceptions: true, showStack: true}));
 });
 
-app.configure('production', function () {
+app.configure('prod', function () {
   app.use(express.static(__dirname + '/public'))
   winston.handleExceptions();
 });

@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "mocha": "1.0.1",
-    "should" : "0.6.1"
+    "should" : "0.6.1",
+    "requirejs" : "2.0.1"
   },
   "scripts": {
     "test": "make test"

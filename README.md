@@ -4,14 +4,31 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 
 ## Run the application
 
-+ Make sure to have latest node installed (tested on 0.6.14, current latest: 0.6.19)
-
-+ Install required node modules for this app: ```npm install```
++ Make sure to have latest node installed
++ Make sure to have 'make'
 
 + Test this application: ```make test```
 
-+ Run this application: ```node server.js```
++ Run this application on development mode: ```make run-dev```
+
++ Run this application on production mode: ```make run-prod```
 
 + Access application: http://localhost:3000
 
-+ Access browser tests: http://localhost:3000/browser
++ Access browser tests: http://localhost:3000/browser (only on development mode)
+
++ Package the production application: ```make package```
+
++ Clean the production application build: ```make clean```
+
+## Make build lifecycle phrases:
+
++ clean
++ resolve (dependencies resolver)
++ test
++ package
++ install
++ run-dev
++ run-prod
++ run (as same as run-prod)
++ deploy
