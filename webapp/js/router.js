@@ -11,8 +11,6 @@ define(
   ],
   function ($, _, Backbone, HelloWorldController) {
 
-    var applicationView;
-
     var AppRouter = Backbone.Router.extend({
       routes: {
         '*actions': 'showDefault'

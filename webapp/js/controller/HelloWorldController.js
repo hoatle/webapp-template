@@ -5,12 +5,12 @@ define(
   [
     'underscore',
     'backbone',
-    'controller/BaseController',
+    'controller/Controller',
     'view/HelloWorldView'
   ],
-  function(_, Backbone, BaseController, HelloWorldView) {
+  function(_, Backbone, Controller, HelloWorldView) {
 
-    var HelloWorldController = _.extend(BaseController, {
+    var HelloWorldController = Controller.extend({
 
       index: function() {
         var helloWorldView = new HelloWorldView({
