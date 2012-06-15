@@ -14,17 +14,16 @@ test: clean resolve
 		$(TESTS_UNIT)
 
 package: test
+
+install: package
 	cp -rf webapp public
 	./node_modules/.bin/r.js -o prod.build.js
 
-install: package
+run-dev: package
+	@NODE_ENV=dev node server.js
 
-
-run-dev:
-	NODE_ENV=dev node server.js
-
-run-prod: package
-	NODE_ENV=prod node server.js
+run-prod: install
+	@NODE_ENV=prod node server.js
 
 run: run-prod
 
