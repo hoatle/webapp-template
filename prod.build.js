@@ -1,4 +1,5 @@
 //compile application for production running
+//See all possible options here: https://github.com/jrburke/r.js/blob/master/build/example.build.js
 
 ({
   paths: {
