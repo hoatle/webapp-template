@@ -10,7 +10,7 @@
 
   };
 
-  LocalStorageStore.prototype = new vsf.Store();
+  LocalStorageStore.prototype = new vsf.store.Store();
 
   LocalStorageStore.prototype.isSupported = function() {
     if (!localStorage) {

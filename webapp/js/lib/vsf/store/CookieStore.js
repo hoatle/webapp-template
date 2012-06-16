@@ -11,7 +11,7 @@
 
   };
 
-  CookieStore.prototype = new vsf.Store();
+  CookieStore.prototype = new vsf.store.Store();
 
   // Inspired from: http://www.javascriptkit.com/javatutors/cookiedetect.shtml
   CookieStore.prototype.isSupported = function() {
