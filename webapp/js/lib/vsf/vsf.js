@@ -69,8 +69,10 @@
   root['vsf'] = vsf;
 
   //AMD
-  define(function() {
-    return vsf;
-  });
+  if ( typeof define === "function") {
+    define(function() {
+      return vsf;
+    });
+  }
 
 }).call(this);
