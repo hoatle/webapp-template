@@ -2,8 +2,7 @@
 require.config({
   paths: {
     'text': 'lib/require/plugins/text-2.0.0',
-    'Handlebars': 'lib/handlebars/handlebars-1.0.0.beta.6',
-    'Handlebars/i18nprecompile': 'lib/handlebars/i18nprecompile',
+    'handlebars': 'lib/handlebars/handlebars-1.0.0.beta.6',
     'hbs': 'lib/require/plugins/hbs-0.2.1',
     'json2': 'lib/json/json2',
     'jquery': 'lib/jquery/jquery-1.7.1',
@@ -49,7 +48,7 @@ require.config({
       exports: 'Backbone'
     },
 
-    Handlebars: {
+    handlebars: {
       exports: 'Handlebars'
     },
 

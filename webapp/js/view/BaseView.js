@@ -8,9 +8,10 @@ define(
   [
     'jquery',
     'underscore',
-    'backbone'
+    'backbone',
+    'handlebars'
   ],
-  function($, _, Backbone) {
+  function($, _, Backbone, HandleBars) {
 
     return Backbone.View.extend({
 
@@ -39,7 +40,8 @@ define(
         this.model = options['model'] || this.model;
         this.appendable = options['appendable'];
 
-        if (this.template) {
+        if (this.textTemplate) {
+          this.template = HandleBars.compile(this.textTemplate);
           this.setElement(this.template(this.model));
         }
         this.afterInitialize.apply(this, arguments)

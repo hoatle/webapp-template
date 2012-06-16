@@ -1,30 +1,23 @@
-// this is used to compile everything down in production, so stuff loads fast!
+//compile application for production running
+
 ({
-  appDir: "./webapp/js/",
-  baseUrl: "./",
-  locale: "en-us",
-  optimize: "uglify",
-  optimizeCss: "standard",
-  inlineText: true,
-  dir: "./public/js/",
-
-  pragmasOnSave: {
-    //removes Handlebars.Parser code (used to compile template strings)
-    //set it to `false` if you need template strings even after build
-    excludeHbsParser : true,
-    // kills the entire plugin set once it's built.
-    excludeHbs: false,
-    //removes i18n precompiler
-    excludeAfterBuild: false
+  paths: {
+    'text': 'lib/require/plugins/text-2.0.0',
+    'handlebars': 'lib/handlebars/handlebars-1.0.0.beta.6',
+    'hbs': 'lib/require/plugins/hbs-0.2.1',
+    'json2': 'lib/json/json2',
+    'jquery': 'lib/jquery/jquery-1.7.1',
+    'underscore': 'lib/underscore/underscore-1.3.3',
+    'backbone': 'lib/backbone/backbone-0.9.2',
+    'bootstrap': 'lib/bootstrap/bootstrap-2.0.4',
+    'jquery.log': 'lib/jquery/plugins/jquery.log-1.0.0'
   },
-
-  mainConfigFile: "./webapp/js/main.js",
-
+  appDir: "./webapp/js",
+  baseUrl: "./",
+  dir: "./public/js",
   modules: [
     {
       name: "main"
     }
-  ],
-
-  findNestedDependencies: true
+  ]
 })

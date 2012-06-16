@@ -8,13 +8,12 @@ define(
     'underscore',
     'backbone',
     'view/BaseView',
-    'hbs!template/HelloWorldTemplate'
+    'text!../template/HelloWorldTemplate.html'
   ],
-  function($, _, Backbone, BaseView, template) {
+  function($, _, Backbone, BaseView, textTemplate) {
 
     return BaseView.extend({
-      template: template
+      textTemplate: textTemplate
     });
-
   }
 );
