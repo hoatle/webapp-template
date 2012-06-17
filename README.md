@@ -1,4 +1,4 @@
-# webapp-template
+# webapp-template [![Build Status](https://secure.travis-ci.org/hoatle/webapp-template.png?branch=master)](http://travis-ci.org/hoatle/webapp-template)
 
 Web application structure template for backbone + requirejs + twitter bootstrap running on nodejs server.
 
