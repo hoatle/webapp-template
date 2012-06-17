@@ -10,7 +10,7 @@
   "author": "Hoat Le <hoatlevan@gmail.com> (http://hoatle.net)",
   "contributors"  : [],
   "dependencies": {
-    "express": "2.5.9",
+    "express": "2.5.10",
     "jade": "0.26.1",
     "winston": "0.5.11"
   },
