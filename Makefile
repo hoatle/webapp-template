@@ -13,7 +13,7 @@ test: clean resolve
 		--timeout 300 \
 		$(TESTS_UNIT)
 
-package: test
+package:
 
 install: package
 	cp -rf webapp public
