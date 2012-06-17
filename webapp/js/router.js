@@ -59,6 +59,11 @@ define(
        *                action, params for constructing url fragment.
        */
       dispatch: function(urlController, options) {
+        if (!urlController) {
+          $.log('Router#dispatch: not valid urlController', urlController);
+          return;
+        }
+        options = options || {};
         var fragment = _getRouteFragment.call(this, urlController, options['action'], options['params']);
         this.navigate(fragment, options);
       },
@@ -79,7 +84,6 @@ define(
       },
 
       dispatchController: function(controller, action, params) {
-        $.log('dispatchController', controller);
         var controllerName = this.controllers[controller];
 
         if (!controllerName) {
