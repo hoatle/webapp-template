@@ -13,9 +13,9 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 
 + Run this application on production mode: ```make run-prod```
 
-+ Access application: http://localhost:3000
++ Access application: http://localhost:8080
 
-+ Access browser tests: http://localhost:3000/browser (only on development mode)
++ Access browser tests: http://localhost:8080/browser (only on development mode)
 
 + Package the production application: ```make package```
 
