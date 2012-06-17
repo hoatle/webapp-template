@@ -26,6 +26,8 @@ app.configure('prod', function () {
   winston.handleExceptions();
 });
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
 
-console.log('Server running at http://127.0.0.1:3000/');
+app.listen(port, function() {
+  console.log('Listening on port: ' + port);
+});

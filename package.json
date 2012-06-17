@@ -12,12 +12,12 @@
   "dependencies": {
     "express": "2.5.10",
     "jade": "0.26.1",
-    "winston": "0.5.11"
+    "winston": "0.5.11",
+    "requirejs" : "2.0.2"
   },
   "devDependencies": {
     "mocha": "1.0.1",
-    "should" : "0.6.1",
-    "requirejs" : "2.0.2"
+    "should" : "0.6.1"
   },
   "scripts": {
     "test": "make test"
