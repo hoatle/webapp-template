@@ -15,19 +15,24 @@
  */
 
 /**
- * The application entry point
+ * The router for application defining, should define on router.controllers attributes
+ *
+ * and can override default behavior on router#defaultController and router#indexController
  */
 
-define(['app-router'], function(AppRouter) {
-
-  function initialize() {
-    var appRouter = new AppRouter({
-      //options here
+define(
+  [
+    'underscore',
+    'backbone',
+    'router'
+  ],
+  function(_, Backbone, Router) {
+    var AppRouter = Router.extend({
+      controllers: {
+        'hello-world': 'HelloWorldController'
+      }
     });
-    appRouter.start();
-  }
 
-  return {
-    initialize: initialize
+    return AppRouter;
   }
-});
+);

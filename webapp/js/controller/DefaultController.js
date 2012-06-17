@@ -15,19 +15,27 @@
  */
 
 /**
- * The application entry point
+ * The Default controller if there is no controller matching by the router.
  */
+define(
+  [
+    'underscore',
+    'backbone',
+    'controller/Controller',
+    'view/DefaultView'
+  ],
+  function(_, Backbone, Controller, DefaultView) {
 
-define(['app-router'], function(AppRouter) {
+    var DefaultController = Controller.extend({
 
-  function initialize() {
-    var appRouter = new AppRouter({
-      //options here
+      index: function(params) {
+        var defaultView = new DefaultView({
+          $container: $('body')
+        });
+        defaultView.render();
+      }
     });
-    appRouter.start();
-  }
 
-  return {
-    initialize: initialize
+    return DefaultController;
   }
-});
+);

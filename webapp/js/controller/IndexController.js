@@ -15,19 +15,27 @@
  */
 
 /**
- * The application entry point
+ * The index controller for displaying on the index home page.
  */
+define(
+  [
+    'underscore',
+    'backbone',
+    'controller/Controller',
+    'view/IndexView'
+  ],
+  function(_, Backbone, Controller, IndexView) {
 
-define(['app-router'], function(AppRouter) {
+    var IndexController = Controller.extend({
 
-  function initialize() {
-    var appRouter = new AppRouter({
-      //options here
+      index: function() {
+        var indexView = new IndexView({
+          $container: $('body')
+        });
+        indexView.render();
+      }
     });
-    appRouter.start();
-  }
 
-  return {
-    initialize: initialize
+    return IndexController;
   }
-});
+);

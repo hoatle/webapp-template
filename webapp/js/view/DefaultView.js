@@ -15,19 +15,20 @@
  */
 
 /**
- * The application entry point
+ * The Default view
  */
+define(
+  [
+    'jquery',
+    'underscore',
+    'backbone',
+    'view/BaseView',
+    'text!../template/DefaultTemplate.html'
+  ],
+  function($, _, Backbone, BaseView, textTemplate) {
 
-define(['app-router'], function(AppRouter) {
-
-  function initialize() {
-    var appRouter = new AppRouter({
-      //options here
+    return BaseView.extend({
+      textTemplate: textTemplate
     });
-    appRouter.start();
   }
-
-  return {
-    initialize: initialize
-  }
-});
+);

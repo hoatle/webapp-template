@@ -19,24 +19,99 @@
  */
 define(
   [
-    'jquery',
     'underscore',
     'backbone',
-    'controller/HelloWorldController'
+    'controller/IndexController',
+    'controller/DefaultController'
   ],
-  function ($, _, Backbone, HelloWorldController) {
+  function (_, Backbone, IndexController, DefaultController) {
 
-    var AppRouter = Backbone.Router.extend({
+    var Router = Backbone.Router.extend({
+      /**
+       * Controller mapping from controller name on url to controller name on 'controller' folder.
+       *
+       * For example: 'user' : 'UserController' => router will try to find module under: controller/UserController.
+       */
+      controllers: {
+
+      },
+
+      /**
+       * Dynamically configures controller mapping.
+       *
+       * This will override any previously defined controller.
+       *
+       * @param urlController the url controller name
+       * @param controllerFileName the accordingly controller file name
+       */
+      setController: function(urlController, controllerFileName) {
+        if (this.controllers[urlController]) {
+          $.log('Router#setController: override ' + this.controllers[urlController]);
+        }
+        this.controllers[urlController] = controllerFileName;
+      },
+
+      /**
+       * Dispatches to another controller by specifying urlController, optional action and optional params.
+       *
+       * @param urlController the url controller
+       * @param options optional options which is the same as for router#route(fragment, opts) with 2 optional more params:
+       *                action, params for constructing url fragment.
+       */
+      dispatch: function(urlController, options) {
+        var fragment = _getRouteFragment.call(this, urlController, options['action'], options['params']);
+        this.navigate(fragment, options);
+      },
+
       routes: {
-        '*actions': 'showDefault'
+        //TODO should have optional mapping like this instead of 3 mappings
+        //':controller?/:action??/:params?' : 'dispatchController'
+        //or
+        //':controller[/:action][/:params]' : 'dispatchController'
+        ':controller': 'dispatchController',
+        ':controller/:action': 'dispatchController',
+        ':controller/:action/*params': 'dispatchController',
+        '*actions': 'indexController'
       },
 
       initialize: function (options) {
 
       },
 
-      showDefault: function () {
-        HelloWorldController.index();
+      dispatchController: function(controller, action, params) {
+        $.log('dispatchController', controller);
+        var controllerName = this.controllers[controller];
+
+        if (!controllerName) {
+          this.defaultController(_getRouteFragment.call(this, controller, action, params));
+          return;
+        }
+        var self = this;
+        require(
+          [
+            'controller/' + controllerName
+          ], function(Controller) {
+            if (action) {
+              if ($.isFunction(Controller[action])) {
+                Controller[action](params);
+                return;
+              }
+            }
+            //default action
+            Controller.index();
+          }, function(err) { //not found matching controller
+            $.log('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
+            self.defaultController(_getRouteFragment.call(self, controller, action, params));
+          }
+        );
+      },
+
+      defaultController: function(params) {
+        DefaultController.index(params);
+      },
+
+      indexController: function(params) {
+        IndexController.index(params);
       },
 
 
@@ -46,5 +121,16 @@ define(
       }
     });
 
-    return AppRouter;
+    function _getRouteFragment(controller, action, params) {
+      var routeFragment = controller;
+      if (action) {
+        routeFragment += '/' + action;
+      }
+      if (params) {
+        routeFragment += '/' + params;
+      }
+      return routeFragment;
+    }
+
+    return Router;
   });

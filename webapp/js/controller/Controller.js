@@ -24,12 +24,24 @@ define(
   ],
   function(_, Backbone) {
 
-    var Controller = {
-      extend: function(opts) {
-        _.extend(this, opts);
-        return this;
-      }
+    var Controller = function() {
+
     };
+
+    //inherits from Backbone
+    var extend = Backbone.Router.extend;
+
+    //extends only static methods
+    Controller.extend = function(opts) {
+      return extend.call(Controller, {}, opts);
+    };
+
+    Controller = Controller.extend({ //static methods only
+      //the default action, should be overridden by controllers if there is no action matched.
+      index: function(params) {
+        $.log('Controller#index is not overridden with params: ' + params);
+      }
+    });
 
     return Controller;
   }
