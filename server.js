@@ -37,11 +37,11 @@ app.configure('dev', function () {
 });
 
 app.configure('prod', function () {
-  app.use(express.static(__dirname + '/public'))
+  app.use(express.static(__dirname + '/public'));
   winston.handleExceptions();
 });
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8080; //process.env.PORT for heroku, 8080 for dotcloud
 
 app.listen(port, function() {
   console.log('Listening on port: ' + port);

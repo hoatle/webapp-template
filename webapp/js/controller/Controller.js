@@ -31,7 +31,7 @@ define(
     //inherits from Backbone
     var extend = Backbone.Router.extend;
 
-    //extends only static methods
+    //extends only static methods, static properties
     Controller.extend = function(opts) {
       return extend.call(Controller, {}, opts);
     };
