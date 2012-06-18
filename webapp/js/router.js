@@ -96,8 +96,9 @@ define(
             'controller/' + controllerName
           ], function(Controller) {
             if (action) {
-              if ($.isFunction(Controller[action])) {
-                Controller[action](params);
+              var methodAction = Controller.actions[action];
+              if (methodAction && $.isFunction(Controller[methodAction])) {
+                Controller[methodAction](params);
                 return;
               }
             }

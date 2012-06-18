@@ -36,7 +36,11 @@ define(
       return extend.call(Controller, {}, opts);
     };
 
-    Controller = Controller.extend({ //static methods only
+    Controller = Controller.extend({ //static methods, fields only
+      //action mapping between url action and method action
+      actions: {
+
+      },
       //the default action, should be overridden by controllers if there is no action matched.
       index: function(params) {
         $.log('Controller#index is not overridden with params: ' + params);
