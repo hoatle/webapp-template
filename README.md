@@ -66,7 +66,7 @@ Error: listen EADDRINUSE
 => You need to change the default port (8080) on server.js to another not used port and it should work.
 
 
-## Copyright Notice
+## License
 <pre>
 /*
  * Copyright (C) hoatle
