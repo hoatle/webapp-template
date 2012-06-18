@@ -30,7 +30,7 @@ define(
       /**
        * Controller mapping from controller name on url to controller name on 'controller' folder.
        *
-       * For example: 'user' : 'UserController' => router will try to find module under: controller/UserController.
+       * For example: 'user' : 'User' => router will try to find module under: controller/UserController.
        */
       controllers: {
 
@@ -42,13 +42,13 @@ define(
        * This will override any previously defined controller.
        *
        * @param urlController the url controller name
-       * @param controllerFileName the accordingly controller file name
+       * @param controllerName the accordingly controller name
        */
-      setController: function(urlController, controllerFileName) {
+      setController: function(urlController, controllerName) {
         if (this.controllers[urlController]) {
           $.log('Router#setController: override ' + this.controllers[urlController]);
         }
-        this.controllers[urlController] = controllerFileName;
+        this.controllers[urlController] = controllerName;
       },
 
       /**
@@ -90,6 +90,7 @@ define(
           this.defaultController(_getRouteFragment.call(this, controller, action, params));
           return;
         }
+        controllerName += 'Controller';
         var self = this;
         require(
           [

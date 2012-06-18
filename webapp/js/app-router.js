@@ -29,7 +29,7 @@ define(
   function(_, Backbone, Router) {
     var AppRouter = Router.extend({
       controllers: {
-        'hello-world': 'HelloWorldController'
+        'hello-world': 'HelloWorld'
       }
     });
 
