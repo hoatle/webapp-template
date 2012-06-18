@@ -46,6 +46,26 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 
 There are built-in configurations for heroku and dotcloud. Just push this repo and it will be deployed.
 
+## FAQ
++ I get this error below when running the command: ```make run-prod```:
+<pre>
+./node_modules/.bin/r.js -o prod.build.js
+./node_modules/.bin/r.js: 1: /bin: Permission denied
+</pre>
+
+=> Please make sure you have the project under a directory that you have write permission on files.
+
++ I get error below when running the command: ```make run```, ```make run-dev``` or ```make run-prod```:
+<pre>
+Error: listen EADDRINUSE
+   at errnoException (net.js:670:11)
+   at Array.0 (net.js:771:26)
+   at EventEmitter._tickCallback (node.js:190:38)
+</pre>
+
+=> You need to change the default port (8080) on server.js to another not used port and it should work.
+
+
 ## Copyright Notice
 <pre>
 /*
