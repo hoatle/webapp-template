@@ -1,6 +1,6 @@
-# webapp-template [![Build Status](https://secure.travis-ci.org/hoatle/webapp-template.png?branch=master)](http://travis-ci.org/hoatle/webapp-template)
+# hoatle.net  [![Build Status](https://secure.travis-ci.org/hoatle/hoatle.net.png?branch=master)](http://travis-ci.org/hoatle/hoatle.net)
 
-Web application structure template for backbone + requirejs + twitter bootstrap running on nodejs server.
+hoatle.net on node, live development deployment at: http://hoatle.herokuapp.com or http://hoatle-hoatle.dotcloud.com
 
 
 ## MVC
@@ -49,6 +49,29 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 There are built-in configurations for heroku and dotcloud. Just push this repo and it will be deployed.
 
 ## FAQ
+
++ I get this error below when running ```make run```, ```make run-dev``` or ```make run```:
+<pre>
+make run-prod
+cp -rf webapp public
+./node_modules/.bin/r.js -o prod.build.js
+make: ./node_modules/.bin/r.js: Command not found
+make: *** [install] Error 127
+</pre>
+
+=> The node modules are not installed. You need to run: ```make resolve``` first. ```resolve``` target can not make it into ```make run```
+as it will involve ```npm install``` and heroku does not allow ```npm`` (?) on deployment. The error is something like this:
+<pre>
+2012-06-18T19:26:18+00:00 heroku[web.1]: State changed from crashed to created
+2012-06-18T19:26:18+00:00 heroku[web.1]: State changed from created to starting
+2012-06-18T19:26:20+00:00 heroku[web.1]: Starting process with command `make run`
+2012-06-18T19:26:20+00:00 heroku[slugc]: Slug compilation finished
+2012-06-18T19:26:20+00:00 app[web.1]: rm -rf public
+2012-06-18T19:26:20+00:00 app[web.1]: npm install
+2012-06-18T19:26:20+00:00 app[web.1]: make: npm: Command not found
+2012-06-18T19:26:20+00:00 app[web.1]: make: *** [resolve] Error 12
+</pre>
+
 + I get this error below when running the command: ```make run-prod```:
 <pre>
 ./node_modules/.bin/r.js -o prod.build.js
