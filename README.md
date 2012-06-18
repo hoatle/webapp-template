@@ -2,6 +2,15 @@
 
 Web application structure template for backbone + requirejs + twitter bootstrap running on nodejs server.
 
+
+## MVC
++ take advantage of convention over configuration.
++ any controller should be placed on 'controller' directory and extends 'controller/Controller', should be named with affix: 'Controller'.
++ any view should be placed on 'view' directory and extends 'view/BaseView', should be named with affix: 'View'.
+
+### url mapping with MVC
++ By default, application uses hash value for router to dispatch to accordingly controller by pattern: /:controller/:action/*params.
+
 ## Run the application
 
 + Make sure to have latest node installed (with version as 0.6.x and above)
