@@ -16,9 +16,11 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 + Make sure to have latest node installed (with version as 0.6.x and above)
 + Make sure to have 'make'
 
-+ Test this application: ```make test```
++ You must run this command first to have node modules installed: ```make``` or ```make resolve```
 
-+ Run this application on development mode: ```make run-dev```
++ Test the application: ```make test```
+
++ Run the application on development mode: ```make run-dev```
 
 + Run this application on production mode: ```make run-prod```
 

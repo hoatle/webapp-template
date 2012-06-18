@@ -29,6 +29,6 @@ run: run-prod
 
 deploy: package
 
-.DEFAULT_GOAL := install
+.DEFAULT_GOAL := resolve
 
 .PHONY: clean, resolve, test, package, install, run-dev, run-prod, run, deploy
