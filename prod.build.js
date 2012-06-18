@@ -34,7 +34,24 @@
   dir: "./public/js",
   modules: [
     {
-      name: "main"
+      name: "main",
+      exclude: ["json2", "underscore", "backbone", "handlebars"] //exclude shim's modules
     }
-  ]
+  ],
+  locale: "en-us",
+  optimize: "uglify",
+  optimizeCss: "standard",
+  inlineText: true,
+  //If using UglifyJS for script optimization, these config options can be
+  //used to pass configuration values to UglifyJS.
+  //See https://github.com/mishoo/UglifyJS for the possible values.
+  uglify: {
+    toplevel: true,
+    ascii_only: true,
+    beautify: false,
+    max_line_length: 1000
+  },
+  preserveLicenseComments: false, //TODO is this compliant with licences?
+
+  findNestedDependencies: true
 })
