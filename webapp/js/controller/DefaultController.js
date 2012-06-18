@@ -19,12 +19,13 @@
  */
 define(
   [
+    'jquery',
     'underscore',
     'backbone',
     'controller/Controller',
     'view/DefaultView'
   ],
-  function(_, Backbone, Controller, DefaultView) {
+  function($, _, Backbone, Controller, DefaultView) {
 
     var DefaultController = Controller.extend({
 

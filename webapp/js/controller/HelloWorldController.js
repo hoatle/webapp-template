@@ -19,12 +19,13 @@
  */
 define(
   [
+    'jquery',
     'underscore',
     'backbone',
     'controller/Controller',
     'view/HelloWorldView'
   ],
-  function(_, Backbone, Controller, HelloWorldView) {
+  function($, _, Backbone, Controller, HelloWorldView) {
 
     var HelloWorldController = Controller.extend({
 

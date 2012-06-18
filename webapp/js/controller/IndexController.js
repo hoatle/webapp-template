@@ -19,12 +19,13 @@
  */
 define(
   [
+    'jquery',
     'underscore',
     'backbone',
     'controller/Controller',
     'view/IndexView'
   ],
-  function(_, Backbone, Controller, IndexView) {
+  function($, _, Backbone, Controller, IndexView) {
 
     var IndexController = Controller.extend({
 
