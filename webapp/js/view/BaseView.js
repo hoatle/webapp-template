@@ -52,9 +52,9 @@ define(
 
         _.bind(_ensureValid, this);
 
-        this.$container = options['$container'];
-        this.model = options['model'] || this.model;
-        this.appendable = options['appendable'];
+        this.$container = this.$container || options['$container'];
+        this.model = this.model || options['model'] || {};
+        this.appendable = this.appendable || options['appendable'];
 
         if (this.textTemplate) {
           this.template = HandleBars.compile(this.textTemplate);
@@ -119,7 +119,10 @@ define(
       },
 
       update: function(model) {
-        this.$el.html(this.template(model));
+        this.model = model;
+        this.destroy();
+        this.initialize();
+        this.render();
       },
 
       /**
