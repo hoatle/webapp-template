@@ -91,8 +91,16 @@
         var loadingStatusEl = document.getElementById('loading-status'),
           loadingModuleNameEl = document.getElementById('loading-module-name');
 
-        loadingStatusEl.innerHTML = loadingStatusEl.innerHTML += '.'; //add one more dot character
-        loadingModuleNameEl.innerHTML = map.name + ' at ' + map.url;
+        //first load
+        if (loadingStatusEl && loadingModuleNameEl) {
+          loadingStatusEl.innerHTML = loadingStatusEl.innerHTML += '.'; //add one more dot character
+          loadingModuleNameEl.innerHTML = map.name + ' at ' + map.url;
+        } else {
+
+          //TODO later load, must have loading indicator for this then
+        }
+
+
       };
     });
   });
