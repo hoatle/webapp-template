@@ -1,7 +1,6 @@
-# hoatle.net  [![Build Status](https://secure.travis-ci.org/hoatle/hoatle.net.png?branch=master)](http://travis-ci.org/hoatle/hoatle.net)
+# webapp-template [![Build Status](https://secure.travis-ci.org/hoatle/webapp-template.png?branch=master)](http://travis-ci.org/hoatle/webapp-template)
 
-hoatle.net on node, live development deployment at: http://hoatle.herokuapp.com or http://hoatle-hoatle.dotcloud.com
-
+Web application structure template for backbone + requirejs + twitter bootstrap application complied by nodejs and running on any web server :-)
 
 ## MVC
 + take advantage of convention over configuration.
