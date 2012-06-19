@@ -90,13 +90,9 @@
       updateModuleProgress = function(context, map, depMaps) {
         var loadingStatusEl = document.getElementById('loading-status'),
           loadingModuleNameEl = document.getElementById('loading-module-name');
-        var nextLoadingStatusContent = loadingStatusEl.innerHTML += '.'; //add one more dot character
-        loadingStatusEl.innerHTML = nextLoadingStatusContent;
 
-        var loadingModuleNameContent = map.name + ' at ' + map.url;
-
-        loadingModuleNameEl.innerHTML = loadingModuleNameContent;
-
+        loadingStatusEl.innerHTML = loadingStatusEl.innerHTML += '.'; //add one more dot character
+        loadingModuleNameEl.innerHTML = map.name + ' at ' + map.url;
       };
     });
   });

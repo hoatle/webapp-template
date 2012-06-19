@@ -19,6 +19,7 @@
 
 ({
   paths: {
+    'domReady': 'lib/require/plugins/domReady-2.0.0',
     'text': 'lib/require/plugins/text-2.0.0',
     'handlebars': 'lib/handlebars/handlebars-1.0.0.beta.6',
     'hbs': 'lib/require/plugins/hbs-0.2.1',
@@ -65,7 +66,9 @@
   dir: "./public/js",
   modules: [
     {
-      name: "main"
+      name: "main",
+      //include dynamic controller here for included into main
+      include: ['controller/HelloWorldController']
     }
   ],
   locale: "en-us",
