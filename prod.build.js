@@ -68,7 +68,10 @@
     {
       name: "main",
       //include dynamic controller here for included into main
-      include: ['controller/HelloWorldController']
+      include: [
+        'controller/HelloWorldController',
+        'controller/UserController'
+      ]
     }
   ],
   locale: "en-us",

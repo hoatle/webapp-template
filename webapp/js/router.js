@@ -87,10 +87,12 @@ define(
         var controllerName = this.controllers[controller];
 
         if (!controllerName) {
-          this.defaultController(_getRouteFragment.call(this, controller, action, params));
-          return;
+          controllerName = controller;
         }
         controllerName += 'Controller';
+
+        //if controllerName is not configured, try to find it with url controller
+        //this is useful to introduce convention over configuration
         var self = this;
         require(
           [
@@ -100,11 +102,13 @@ define(
               var methodAction = Controller.actions[action];
               if (methodAction && $.isFunction(Controller[methodAction])) {
                 Controller[methodAction](params);
-                return;
+              } else if ($.isFunction(Controller[action])) { //convention over configuration
+                Controller[action](params);
               }
+            } else {
+              //default action
+              Controller.index();
             }
-            //default action
-            Controller.index();
           }, function(err) { //not found matching controller
             $.log('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
             self.defaultController(_getRouteFragment.call(self, controller, action, params));
