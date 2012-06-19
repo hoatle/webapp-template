@@ -29,13 +29,43 @@
     'bootstrap': 'lib/bootstrap/bootstrap-2.0.4',
     'jquery.log': 'lib/jquery/plugins/jquery.log-1.0.0'
   },
+  shim: {
+
+    json2: {
+      exports: 'JSON'
+    },
+
+    underscore: {
+      exports: '_'
+    },
+
+    backbone: {
+      deps:
+        [
+          'underscore',
+          'jquery'
+        ],
+      exports: 'Backbone'
+    },
+
+    handlebars: {
+      exports: 'Handlebars'
+    },
+
+    //jquery plugins
+    'bootstrap': ['jquery'],
+
+    'jquery.log': {
+      deps: ['jquery'],
+      exports: 'jQuery.fn.log'
+    }
+  },
   appDir: "./webapp/js",
   baseUrl: "./",
   dir: "./public/js",
   modules: [
     {
-      name: "main",
-      exclude: ["json2", "underscore", "backbone", "handlebars"] //exclude shim's modules
+      name: "main"
     }
   ],
   locale: "en-us",
