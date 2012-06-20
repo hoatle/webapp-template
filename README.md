@@ -35,14 +35,14 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 * On Android:
   * Copy all files and directories of ```webapp-template``` to ```assets``` directory
   * Copy ```cordova-{version}.js``` to ```webapp``` directory
-  * On dev mode: Set ```super.loadUrl("file:///android_asset/webapp/index.html");```
-  * On prod mode:
-      * ```make resolve``` then ```make install```
+  * On **dev mode**: Set ```super.loadUrl("file:///android_asset/webapp/index.html");```
+  * On **prod mode**:
+      * Run these commands: ```make resolve```, then ```make install```
       * Set ```super.loadUrl("file:///android_asset/public/index.html");```
   * Packaging:
       * Make sure on prod mode
       * Keep only ```public``` directory
-      * Packaging the app as normal
+      * Packaging the app as normal Android application and you're done :-)
 
 ## Make build lifecycle phrases:
 
