@@ -31,6 +31,19 @@ Web application structure template for backbone + requirejs + twitter bootstrap 
 
 + Clean the production application build: ```make clean```
 
+## Develop web application for phonegap?
+* On Android:
+  * Copy all files and directories of ```webapp-template``` to ```assets``` directory
+  * Copy ```cordova-{version}.js``` to ```webapp``` directory
+  * On dev mode: Set ```super.loadUrl("file:///android_asset/webapp/index.html");```
+  * On prod mode:
+    * ```make resolve``` then ```make install```
+    * Set ```super.loadUrl("file:///android_asset/public/index.html");```
+  * Packaging:
+    * Make sure on prod mode
+    * Keep only ```public``` directory
+    * Packaging the app as normal
+
 ## Make build lifecycle phrases:
 
 + clean
