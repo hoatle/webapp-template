@@ -120,8 +120,6 @@ define(
               'controller/' + controllerName
             ], function(Controller) {
               var controllerInstance = new Controller();
-              $.log('new controller', controllerInstance);
-
               cachedControllers[controllerName] = controllerInstance;
 
               processController(controllerInstance);
