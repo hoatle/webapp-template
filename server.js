@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+var env = require('./lib/vsf/environment');
 var express = require('express');
 var app = express.createServer();
 
@@ -41,8 +43,6 @@ app.configure('prod', function () {
   winston.handleExceptions();
 });
 
-var port = process.env.PORT || 8080; //process.env.PORT for heroku, 8080 for dotcloud
-
-app.listen(port, function() {
-  console.log('Listening on port: ' + port);
+app.listen(env.port(), function() {
+  console.log('Listening on port: ' + env.port());
 });
