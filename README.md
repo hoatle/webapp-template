@@ -6,7 +6,7 @@ Web application structure template (layout), starting point for backbone + requi
 * http://watpl-hoatle.dotcloud.com/
 * http://watpl.herokuapp.com
 * http://watpl.jit.su/ (dev mod)
-*
+* http://watpl.ap01.aws.af.cm/ (dev mode)
 
 ## MVC
 + take advantage of convention over configuration.
