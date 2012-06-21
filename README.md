@@ -2,6 +2,12 @@
 
 Web application structure template (layout), starting point for backbone + requirejs + twitter bootstrap application complied by nodejs and running on any web server or phonegap environment :-)
 
+## Live development deployment at:
+* http://watpl-hoatle.dotcloud.com/
+* http://watpl.herokuapp.com
+* http://watpl.jit.su/ (dev mod)
+*
+
 ## MVC
 + take advantage of convention over configuration.
 + any controller should be placed on 'controller' directory and extends 'controller/Controller', should be named with affix: 'Controller'.

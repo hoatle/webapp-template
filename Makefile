@@ -27,7 +27,21 @@ run-prod: install
 
 run: run-prod
 
-deploy: package
+deploy-dotcloud:
+	dotcloud push watpl
+
+deploy-heroku:
+	git push heroku master
+
+deploy-appfog:
+	af update watpl
+
+deploy-jitsu:
+	jitsu deploy
+
+# This is just the steps to deploy app, the configuration for each hosting services must be done for each service
+# before using this short-hand deployment command.
+deploy: deploy-dotcloud deploy-heroku deploy-appfog deploy-jitsu
 
 .DEFAULT_GOAL := resolve
 
