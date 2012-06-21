@@ -27,18 +27,35 @@ define(
   ],
   function($, _, Backbone, Controller, UserView) {
 
+    var userView;
+
     return Controller.extend({
 
-      index: function(params) {
-        var userView = new UserView({
+      initialize: function() {
+        userView = new UserView({
           $container: $('body')
         });
 
+        //Registers a url action with a string as action method of controller instance.
+        this.action('show', 'showUser');
+
+        //Registers a url action with a function to be run under controller instance context.
+        this.action('update', function(params) {
+          alert('update user: ' + params);
+        });
+
+      },
+
+      index: function(params) {
         userView.render();
       },
 
       notify: function(params) {
         alert('notify action from UserController!');
+      },
+
+      showUser: function(params) {
+        alert('show user: ' + params);
       }
     });
   }

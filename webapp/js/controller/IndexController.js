@@ -27,12 +27,17 @@ define(
   ],
   function($, _, Backbone, Controller, IndexView) {
 
+    var indexView;
+
     var IndexController = Controller.extend({
 
-      index: function() {
-        var indexView = new IndexView({
+      initialize: function() {
+        indexView = new IndexView({
           $container: $('body')
         });
+      },
+
+      index: function() {
         indexView.render();
       }
     });

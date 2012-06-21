@@ -26,6 +26,18 @@ define(
   ],
   function (_, Backbone, IndexController, DefaultController) {
 
+    var indexController = new IndexController(),
+      defaultController = new DefaultController();
+
+    /**
+     * Holds controller instance for caching purpose.
+     *
+     * @type {Object}
+     */
+    var cachedControllers = {
+
+    };
+
     var Router = Backbone.Router.extend({
       /**
        * Controller mapping from controller name on url to controller name on 'controller' folder.
@@ -94,34 +106,56 @@ define(
         //if controllerName is not configured, try to find it with url controller
         //this is useful to introduce convention over configuration
         var self = this;
-        require(
-          [
-            'controller/' + controllerName
-          ], function(Controller) {
-            if (action) {
-              var methodAction = Controller.actions[action];
-              if (methodAction && $.isFunction(Controller[methodAction])) {
-                Controller[methodAction](params);
-              } else if ($.isFunction(Controller[action])) { //convention over configuration
-                Controller[action](params);
-              }
-            } else {
-              //default action
-              Controller.index();
+
+        var cachedControllerInstance = cachedControllers[controllerName];
+
+        if (cachedControllerInstance) {
+
+          processController(cachedControllerInstance);
+
+        } else {
+
+          require(
+            [
+              'controller/' + controllerName
+            ], function(Controller) {
+              var controllerInstance = new Controller();
+              $.log('new controller', controllerInstance);
+
+              cachedControllers[controllerName] = controllerInstance;
+
+              processController(controllerInstance);
+            }, function(err) { //not found matching controller
+              $.log('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
+              self.defaultController(_getRouteFragment.call(self, controller, action, params));
             }
-          }, function(err) { //not found matching controller
-            $.log('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
-            self.defaultController(_getRouteFragment.call(self, controller, action, params));
+          );
+
+        }
+
+        function processController(controllerInstance) {
+          if (action) {
+            var methodAction = controllerInstance.actions[action];
+            if (methodAction && $.isFunction(controllerInstance[methodAction])) {
+              controllerInstance[methodAction](params);
+            } else if ($.isFunction(methodAction)) {
+              methodAction.call(controllerInstance, params);
+            } else if ($.isFunction(controllerInstance[action])) { //convention over configuration
+              controllerInstance[action](params);
+            }
+          } else {
+            //default action
+            controllerInstance.index();
           }
-        );
+        }
       },
 
       defaultController: function(params) {
-        DefaultController.index(params);
+        defaultController.index(params);
       },
 
       indexController: function(params) {
-        IndexController.index(params);
+        indexController.index(params);
       },
 
 
