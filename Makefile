@@ -34,7 +34,7 @@ deploy-heroku:
 	git push heroku master
 
 deploy-appfog:
-	af update watpl
+	af update watpl --no-resources #--no-resources to avoid: Error 402: App packaging failed: 'Failed synchronizing resource pool'
 
 #make sure to have nodester repository for deployment
 
