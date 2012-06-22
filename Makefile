@@ -37,6 +37,7 @@ deploy-appfog:
 	af update watpl
 
 #make sure to have nodester repository for deployment
+
 deploy-nodester:
 	git push nodester master
 
@@ -45,6 +46,7 @@ deploy-jitsu:
 
 # This is just the steps to deploy app, the configuration for each hosting services must be done for each service
 # before using this short-hand deployment command.
+
 deploy: deploy-dotcloud deploy-heroku deploy-appfog deploy-nodester deploy-jitsu
 
 .DEFAULT_GOAL := resolve
