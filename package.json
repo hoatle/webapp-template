@@ -30,5 +30,6 @@
   "engines": {
     "node": "v0.6.x"
   },
+  "node": "0.6.19",
   "subdomain": "watpl"
 }
