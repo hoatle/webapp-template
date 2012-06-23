@@ -1,4 +1,8 @@
 www:
-  type: nodejs
+  type: custom
+  buildscript: tool/builder
+  ports:
+    www: http
+  process: make run
   approot: .
-
+  node_version: v0.6.19
