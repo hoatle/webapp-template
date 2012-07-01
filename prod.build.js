@@ -85,9 +85,10 @@
     toplevel: true,
     ascii_only: true,
     beautify: false,
-    max_line_length: 1000
+    max_line_length: 10000
   },
   preserveLicenseComments: false, //TODO is this compliant with licences?
 
-  findNestedDependencies: true
+  findNestedDependencies: true,
+  removeCombined: true //bug: https://github.com/jrburke/r.js/issues/193
 })
