@@ -19,8 +19,8 @@ install: package
 	cp -rf webapp public
 	./node_modules/.bin/r.js -o prod.build.js
 
-run-dev: package
-	@NODE_ENV=dev node server.js
+run-dev: resolve package
+	@NODE_ENV=dev ./node_modules/.bin/supervisor -i node_modules,test,webapp server.js
 
 run-prod: install
 	@NODE_ENV=prod node server.js

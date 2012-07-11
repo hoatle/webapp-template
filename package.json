@@ -19,6 +19,7 @@
     "requirejs": "2.0.2"
   },
   "devDependencies": {
+    "supervisor":"0.4.1",
     "mocha": "1.0.1",
     "should": "0.6.1"
   },
