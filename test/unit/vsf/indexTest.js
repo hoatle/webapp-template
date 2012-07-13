@@ -7,7 +7,7 @@ var should = require('should'),
 
 describe('vsf', function() {
 
-  it('vsf APIs', function() {
+  it('APIs', function() {
     vsf.appDir.should.be.a('function');
     vsf.require.should.be.a('function');
   });

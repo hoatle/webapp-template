@@ -1,6 +1,6 @@
 TESTS_UNIT = test/unit/*.js
 
-TESTS_VSF_UNIT = test/unit/vsf/*.js
+TESTS_VSF_UNIT = test/unit/vsf/*.js test/unit/vsf/db/*.js
 
 REPORTER = list
 
