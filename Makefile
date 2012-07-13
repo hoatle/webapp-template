@@ -1,4 +1,7 @@
 TESTS_UNIT = test/unit/*.js
+
+TESTS_VSF_UNIT = test/unit/vsf/*.js
+
 REPORTER = list
 
 clean:
@@ -12,6 +15,12 @@ test: clean resolve
 		--reporter $(REPORTER) \
 		--timeout 300 \
 		$(TESTS_UNIT)
+
+test-vsf-unit: clean resolve
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		--timeout 300 \
+		$(TESTS_VSF_UNIT)
 
 package: clean
 
