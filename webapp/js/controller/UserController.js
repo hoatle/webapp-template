@@ -33,7 +33,7 @@ define(
 
       initialize: function() {
         userView = new UserView({
-          $container: $('body')
+          $container: $('.watpl-container')
         });
 
         //Registers a url action with a string as action method of controller instance.

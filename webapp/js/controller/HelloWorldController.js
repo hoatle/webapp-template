@@ -31,7 +31,7 @@ define(
 
       index: function() {
         var helloWorldView = new HelloWorldView({
-          $container: $('body')
+          $container: $('.watpl-container')
         });
         helloWorldView.render();
       }

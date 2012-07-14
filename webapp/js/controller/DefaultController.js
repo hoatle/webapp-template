@@ -31,7 +31,7 @@ define(
 
       index: function(params) {
         var defaultView = new DefaultView({
-          $container: $('body')
+          $container: $('.watpl-container')
         });
         defaultView.render();
       }
