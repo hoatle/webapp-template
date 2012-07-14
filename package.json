@@ -1,6 +1,6 @@
 {
   "name": "webapp-template",
-  "version": "0.1.0-14",
+  "version": "0.0.1",
   "description": "A web application template that manages the mapping and dispatching of action handlers with powerful APIs for your application",
   "keywords": [
     "webapp-template",
