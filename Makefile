@@ -1,4 +1,4 @@
-TESTS_UNIT = test/unit/*.js
+TESTS_COMMON_UNIT = test/unit/*.js
 
 TESTS_VSF_UNIT = test/unit/vsf/*.js test/unit/vsf/db/*.js
 
@@ -10,17 +10,21 @@ clean:
 resolve:
 	npm install
 
-test: clean resolve
+test-common-unit: clean resolve
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--timeout 300 \
-		$(TESTS_UNIT)
+		$(TESTS_COMMON_UNIT)
 
 test-vsf-unit: clean resolve
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--timeout 300 \
 		$(TESTS_VSF_UNIT)
+
+test-unit: test-common-unit test-vsf-unit
+
+test: test-unit
 
 package: clean
 

@@ -55,7 +55,7 @@ Web application structure template (layout), starting point for backbone + requi
 
 + clean
 + resolve (dependencies resolver)
-+ test
++ test (test-common-unit, test-vsf-unit)
 + package
 + install
 + run-dev
