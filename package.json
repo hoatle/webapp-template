@@ -30,8 +30,9 @@
     "start": "server.js"
   },
   "engines": {
-    "node": ">= 0.4.x"
+    "node": ">= 0.4.x",
+    "npm": "1.1.x"
   },
-  "node": "0.6.17",
+  "node": "0.8.2",
   "subdomain": "watpl"
 }
