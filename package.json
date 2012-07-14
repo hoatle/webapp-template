@@ -1,6 +1,6 @@
 {
   "name": "webapp-template",
-  "version": "0.0.1",
+  "version": "0.1.0-14",
   "description": "A web application template that manages the mapping and dispatching of action handlers with powerful APIs for your application",
   "keywords": [
     "webapp-template",
@@ -21,7 +21,7 @@
     "mongoose": "2.7.0"
   },
   "devDependencies": {
-    "supervisor":"0.4.1",
+    "supervisor": "0.4.1",
     "mocha": "1.3.0",
     "should": "0.6.3"
   },
@@ -33,6 +33,6 @@
     "node": ">= 0.4.x",
     "npm": "1.1.x"
   },
-  "node": "0.8.2",
+  "node": "0.6.19",
   "subdomain": "watpl"
 }

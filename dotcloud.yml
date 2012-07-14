@@ -5,4 +5,4 @@ www:
     www: http
   process: make run
   approot: .
-  node_version: v0.6.19
+  node_version: v0.8.2
