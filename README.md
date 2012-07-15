@@ -1,6 +1,6 @@
 # webapp-template [![Build Status](https://secure.travis-ci.org/hoatle/webapp-template.png?branch=master)](http://travis-ci.org/hoatle/webapp-template)
 
-Web application structure template (layout), starting point for backbone + requirejs + twitter bootstrap application complied by nodejs and running on any web server or phonegap environment :-)
+Web application structure template (layout), starting point for backbone + requirejs + twitter bootstrap application compiled by nodejs and running on any web server or phonegap environment :-)
 
 ## Live development deployment at:
 * http://watpl-hoatle.dotcloud.com/
