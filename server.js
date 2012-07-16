@@ -18,8 +18,7 @@ var env = require('./lib/vsf/environment');
 var express = require('express');
 var app = express.createServer();
 
-// use winston for logging
-var winston = require('winston');
+var logger = require('./lib/logger');
 
 // Configuration
 //basic html handling as jade
@@ -40,9 +39,9 @@ app.configure('dev', function () {
 
 app.configure('prod', function () {
   app.use(express.static(__dirname + '/public'));
-  winston.handleExceptions();
+  logger.handleExceptions();
 });
 
 app.listen(env.port(), function() {
-  console.log('Listening on port: ' + env.port());
+  logger.info('Listening on port: ' + env.port());
 });
