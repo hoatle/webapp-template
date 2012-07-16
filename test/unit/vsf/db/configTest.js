@@ -84,4 +84,45 @@ describe('vsf.db.config', function() {
     optionalMySqlConfig.getDbName().should.equal('watpl');
     optionalMySqlConfig.getDbUrl().should.equal('mysql://mysql.watpl.com:3306/watpl');
   });
+
+  it('params.dbUrl', function() {
+    var dbUrl = 'mongodb://root:awesome@localhost:27017/watpl';
+
+    var config = Config({
+      dbUrl: dbUrl
+    });
+
+    config.getType().should.equal('mongodb');
+    config.getUsername().should.equal('root');
+    config.getPassword().should.equal('awesome');
+    config.getAddress().should.equal('localhost');
+    config.getPort().should.equal(27017);
+    config.getDbName().should.equal('watpl');
+    config.getDbUrl().should.equal(dbUrl);
+
+    var dbUrl2 = 'mysql://localhost:3306/watpl';
+
+    var config2 = Config({
+      dbUrl: dbUrl2
+    });
+
+    config2.getType().should.equal('mysql');
+    should.not.exist(config2.getUsername());
+    should.not.exist(config2.getPassword());
+    config2.getAddress().should.equal('localhost');
+    config2.getPort().should.equal(3306);
+    config2.getDbName().should.equal('watpl');
+    config2.getDbUrl().should.equal(dbUrl2);
+
+    //not well-formed
+
+    var dbUrl3 = 'mysql:/def:r45/abc';
+
+    (function() {
+      var config3 = Config({
+        dbUrl: dbUrl3
+      });
+    }).should.throw(/^config.dbUrl format is not valid/);
+
+  });
 });
