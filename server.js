@@ -18,6 +18,7 @@ var env = require('./lib/vsf/environment');
 var express = require('express');
 var app = express.createServer();
 
+var winston = require('winston');
 var logger = require('./lib/logger');
 
 // Configuration
@@ -38,6 +39,7 @@ app.configure('dev', function () {
 });
 
 app.configure('prod', function () {
+  logger.setLevels(winston.config.syslog.levels);
   app.use(express.static(__dirname + '/public'));
   logger.handleExceptions();
 });
