@@ -12,6 +12,11 @@
  */
 (function($) {
 
+  /**
+   * All supported log levels.
+   *
+   * @type {Object}
+   */
   var LEVELS = {
     trace: 0,
     debug: 1,
@@ -20,8 +25,21 @@
     error: 4
   };
 
+  /**
+   * The default log level is 'trace'.
+   *
+   * @type {Number}
+   */
   var allowedLevel = LEVELS.trace;
 
+  /**
+   * The main logging method.
+   *
+   * @param level
+   * @param msg
+   * @param obj
+   * @return {*}
+   */
   var log = function (level, msg, obj) {
     if (window.console) {
       if (obj) {
@@ -33,12 +51,24 @@
     return this;
   };
 
+  /**
+   * Sets the log level for logging or not.
+   * By default, all levels are logged.
+   * On production mode, need to change it to higher level, recommended: $.log.setLevel('info');
+   *
+   * @param newAllowedLevel
+   */
   log.setLevel = function(newAllowedLevel) {
     if (!isNaN(LEVELS[newAllowedLevel])) {
       allowedLevel = LEVELS[newAllowedLevel];
     }
   };
 
+  /**
+   * The shortcut methods for logging.
+   *
+   * @type {Array}
+   */
   var methods = ['trace', 'debug', 'info', 'warn', 'error'];
 
   for (var i = 0, len = methods.length; i < len; i++) {
