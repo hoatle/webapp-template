@@ -47,6 +47,11 @@ define(
        * @param options the options literal object, usually have: $container, model and appendable attribute.
        */
       initialize: function(options) {
+        //the global pubSub channel for all views to share common triggers and event handlers.
+        //this is useful when there are many nested views and we want to communicate with top most views.
+        //very useful for views' communication.
+        //@api experimental
+        this.pubSubChannel = Backbone.Events;
 
         this.beforeInitialize.apply(this, arguments);
 
