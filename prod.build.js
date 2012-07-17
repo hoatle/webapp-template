@@ -22,7 +22,6 @@
     'domReady': 'lib/require/plugins/domReady-2.0.0',
     'text': 'lib/require/plugins/text-2.0.1',
     'handlebars': 'lib/handlebars/handlebars-1.0.0.beta.6',
-    'hbs': 'lib/require/plugins/hbs-0.2.1',
     'json2': 'lib/json/json2',
     'jquery': 'lib/jquery/jquery-1.7.1',
     'underscore': 'lib/underscore/underscore-1.3.3',
@@ -90,5 +89,5 @@
   preserveLicenseComments: false, //TODO is this compliant with licences?
 
   findNestedDependencies: true,
-  removeCombined: true //bug: https://github.com/jrburke/r.js/issues/193
+  removeCombined: true //bug: https://github.com/jrburke/r.js/issues/193 //resolved on 2.0.4
 })
