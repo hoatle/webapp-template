@@ -41,13 +41,32 @@
    * @return {*}
    */
   var log = function (level, msg, obj) {
+
     if (window.console) {
+
+      var logMethod;
+
+      if (level !== 'trace') {
+        logMethod = console[level];
+      }
+
+      if (!logMethod) {
+        logMethod = console.log;
+      }
+
       if (obj) {
-        console.log("[%s] %s: %o", level.toUpperCase(), msg, obj);
+        logMethod.call(console, "[%s] %s: %o", level.toUpperCase(), msg, obj);
       } else {
-        console.log("[%s] %s",level.toUpperCase(), msg);
+        logMethod.call(console, "[%s] %s", level.toUpperCase(), msg);
+      }
+
+      //stack tracing for the error log
+      if (level === 'error' && console.trace) {
+        console.trace();
       }
     }
+
+    //keep chaining
     return this;
   };
 
