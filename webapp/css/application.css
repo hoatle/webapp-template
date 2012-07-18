@@ -1,4 +1,6 @@
-/** application booting: loading requirejs modules **/
+/** application css file **/
+
+@import "bootstrap-2.0.4.css";
 
 .loading-status {
 
