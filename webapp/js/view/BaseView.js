@@ -53,12 +53,15 @@ define(
         //@api experimental
         this.pubSubChannel = Backbone.Events;
 
+        //the modelBinder instance of Backbone.ModelBinder plugin
+        this.modelBinder = new Backbone.ModelBinder();
+
         this.beforeInitialize.apply(this, arguments);
 
         _.bind(_ensureValid, this);
 
         this.$container = this.$container || options['$container'];
-        this.model = this.model || options['model'] || {};
+        this.model = this.model || options['model'] || new Backbone.Model();
         this.appendable = this.appendable || options['appendable'];
 
         if (this.textTemplate) {

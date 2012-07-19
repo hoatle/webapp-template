@@ -29,6 +29,7 @@
       'jquery': 'lib/jquery/jquery-1.7.1',
       'underscore': 'lib/underscore/underscore-1.3.3',
       'backbone': 'lib/backbone/backbone-0.9.2',
+      'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
       'bootstrap': 'lib/bootstrap/bootstrap-2.0.4',
       'jquery.log': 'lib/jquery/plugins/jquery.log-1.0.0'
     },
@@ -50,6 +51,11 @@
             'jquery'
           ],
         exports: 'Backbone'
+      },
+
+      'Backbone.ModelBinder': {
+        deps: ['backbone'],
+        exports: 'Backbone.ModelBinder'
       },
 
       handlebars: {
@@ -104,14 +110,16 @@
     });
   });
 
-//load jquery plugins //TODO this is a bit ugly
+  //load jquery plugins, backbone plugins //TODO this is a bit ugly
   require(
     [
       'jquery',
       'bootstrap',
-      'jquery.log'
+      'jquery.log',
+      'backbone',
+      'Backbone.ModelBinder'
     ],
-    function($) {
+    function() {
 
       //boot the application
 
