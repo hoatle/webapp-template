@@ -63,7 +63,8 @@ define(
 
         if (this.textTemplate) {
           this.template = HandleBars.compile(this.textTemplate);
-          this.setElement(this.template(this.model));
+          var model = this.model.toJSON ? this.model.toJSON() : this.model;
+          this.setElement(this.template(model));
         }
         this.afterInitialize.apply(this, arguments)
       },
