@@ -31,7 +31,10 @@ define(
 
       index: function() {
         var helloWorldView = new HelloWorldView({
-          $container: $('.watpl-container')
+          $container: $('.watpl-container'),
+          model: new Backbone.Model({
+            defaultHelloName: 'World'
+          })
         });
         helloWorldView.render();
       }

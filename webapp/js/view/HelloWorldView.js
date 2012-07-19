@@ -28,7 +28,16 @@ define(
   function($, _, Backbone, BaseView, textTemplate) {
 
     return BaseView.extend({
-      textTemplate: textTemplate
+      textTemplate: textTemplate,
+      afterRender: function() {
+
+        this.modelBinder.bind(this.model, this.$el);
+
+        this.$('#name').on('keyup', $.proxy(function(e) {
+          this.model.set('helloName', $(e.target).val());
+        }, this));
+
+      }
     });
   }
 );
