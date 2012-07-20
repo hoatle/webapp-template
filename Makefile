@@ -30,7 +30,9 @@ package: clean
 
 install: package
 	cp -rf webapp public
+	./node_modules/less/bin/lessc webapp/css/application.less webapp/css/application.css
 	./node_modules/.bin/r.js -o prod.build.js
+	find ./public -type f -name "*.less" -exec rm -f {} \;
 
 run-dev: resolve package
 	@NODE_ENV=dev ./node_modules/.bin/supervisor -i node_modules,test,webapp server.js

@@ -18,6 +18,7 @@ var env = require('./lib/vsf/environment');
 var express = require('express');
 var app = express.createServer();
 
+var connectLess = require('connect-less');
 var winston = require('winston');
 var logger = require('./lib/logger');
 
@@ -34,6 +35,7 @@ app.configure(function () {
 
 app.configure('dev', function () {
   app.use(express.static(__dirname + '/webapp'));
+  app.use(connectLess({ src: __dirname + '/webapp/' }));
   app.use(express.static(__dirname + '/test'));
   app.use(express.errorHandler({dumpExceptions: true, showStack: true}));
 });
