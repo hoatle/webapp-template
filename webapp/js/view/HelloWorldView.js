@@ -34,7 +34,13 @@ define(
         this.modelBinder.bind(this.model, this.$el);
 
         this.$('#name').on('keyup', $.proxy(function(e) {
-          this.model.set('helloName', $(e.target).val());
+          var $el = $(e.target), val = $el.val();
+
+          if (val !== $el.data('val')) {
+            this.model.set('name', val);
+            $el.data('val', val);
+          }
+
         }, this));
 
       }

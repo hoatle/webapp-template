@@ -33,7 +33,7 @@ define(
         var helloWorldView = new HelloWorldView({
           $container: $('.watpl-container'),
           model: new Backbone.Model({
-            defaultHelloName: 'World'
+            name: 'World'
           })
         });
         helloWorldView.render();
