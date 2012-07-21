@@ -12,12 +12,14 @@
  */
 (function($) {
 
+  'use strict';
+
   /**
    * All supported log levels.
    *
    * @type {Object}
    */
-  var LEVELS = {
+  var LEVEL = {
     trace: 0,
     debug: 1,
     info: 2,
@@ -30,7 +32,7 @@
    *
    * @type {Number}
    */
-  var allowedLevel = LEVELS.trace;
+  var allowedLevel = LEVEL.trace;
 
   /**
    * The main logging method.
@@ -71,15 +73,26 @@
   };
 
   /**
+   * Exposes log levels.
+   *
+   * @type {Object}
+   */
+  log.LEVEL = LEVEL;
+
+  /**
    * Sets the log level for logging or not.
    * By default, all levels are logged.
-   * On production mode, need to change it to higher level, recommended: $.log.setLevel('info');
+   * On production mode, need to change it to higher level, recommended: $.log.setLevel($.log.LEVEL.info);
    *
-   * @param newAllowedLevel
+   * @param newAllowedLevel recommend using constants of: $.log.LEVEL.trace to $.log.LEVEL.error
+   *                        can be string: 'trace', 'debug', 'info', 'warn' or 'error'.
+   *                        can be number between 0 (trace) to 4 (error).
    */
   log.setLevel = function(newAllowedLevel) {
-    if (!isNaN(LEVELS[newAllowedLevel])) {
-      allowedLevel = LEVELS[newAllowedLevel];
+    if (isNaN(newAllowedLevel) && !isNaN(LEVEL[newAllowedLevel])) {
+      allowedLevel = LEVEL[newAllowedLevel];
+    } else if (LEVEL.trace <= newAllowedLevel && newAllowedLevel <= LEVEL.error) {
+      allowedLevel = newAllowedLevel;
     }
   };
 
@@ -93,7 +106,7 @@
   for (var i = 0, len = methods.length; i < len; i++) {
     $[methods[i]] = $.fn[methods[i]] = (function(level) {
       return function() {
-        if (LEVELS[level] >= allowedLevel) {
+        if (LEVEL[level] >= allowedLevel) {
           var args = [].slice.call(arguments);
           args.splice(0, 0, level);
           return log.apply(this, args);

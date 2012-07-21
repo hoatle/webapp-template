@@ -121,6 +121,11 @@
     ],
     function() {
 
+      //TODO make it automatically via "make install": https://github.com/hoatle/webapp-template/issues/33
+      //uncomment this line below for production deployment log
+
+      //$.log.setLevel($.log.LEVEL.info);
+
       //boot the application
 
       require(['app'], function(app) {
