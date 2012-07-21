@@ -36,8 +36,7 @@ app.configure(function () {
 app.configure('dev', function () {
   app.use(connectLess({
     src: __dirname + '/webapp',
-    force: true,
-    debug: true
+    force: true
   }));
   app.use(express.static(__dirname + '/webapp'));
   app.use(express.static(__dirname + '/test'));
