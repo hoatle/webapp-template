@@ -53,6 +53,9 @@ define(
         //@api experimental
         this.pubSubChannel = Backbone.Events;
 
+        //indicates if the view is rendered or not
+        this.rendered = false;
+
         //the modelBinder instance of Backbone.ModelBinder plugin
         this.modelBinder = new Backbone.ModelBinder();
 
@@ -115,7 +118,9 @@ define(
 
         this.afterRender();
 
-        return this
+        this.rendered = true;
+
+        return this;
       },
 
       /**
