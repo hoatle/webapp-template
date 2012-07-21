@@ -99,7 +99,7 @@
         //first load
         if (loadingStatusEl && loadingModuleNameEl) {
           loadingStatusEl.innerHTML = loadingStatusEl.innerHTML += '.'; //add one more dot character
-          loadingModuleNameEl.innerHTML = map.name + ' at ' + map.url;
+          loadingModuleNameEl.innerHTML = map.name + (map.url ? ' at ' + map.url : '') ;
         } else {
 
           //TODO later load, must have loading indicator for this then
