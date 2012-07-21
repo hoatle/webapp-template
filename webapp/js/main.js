@@ -121,10 +121,13 @@
     ],
     function() {
 
-      //TODO make it automatically via "make install": https://github.com/hoatle/webapp-template/issues/33
-      //uncomment this line below for production deployment log
+      //fake 'has' if it's not available
+      var has = root.has = root.has || function() {};
 
-      //$.log.setLevel($.log.LEVEL.info);
+      //if it's prod mode, set log level to 'info'
+      if (has('prod')) {
+        $.log.setLevel($.log.LEVEL.info);
+      }
 
       //boot the application
 

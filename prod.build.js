@@ -69,6 +69,9 @@
   appDir: "./webapp",
   baseUrl: "./js",
   dir: "./public",
+  has: {
+    prod: true //production mode, see more at: http://requirejs.org/docs/optimization.html#hasjs
+  },
   modules: [
     {
       name: "main",
