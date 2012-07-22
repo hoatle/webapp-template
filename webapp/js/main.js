@@ -122,7 +122,9 @@
     function() {
 
       //fake 'has' if it's not available
-      var has = root.has = root.has || function() {};
+      var has = root.has = root.has || function() {
+        return false;
+      };
 
       //if it's prod mode, set log level to 'info'
       if (has('prod')) {
