@@ -44,7 +44,7 @@
     if (cookieEnabled) {
       this.setItem('testcookie', 'testcookie');
       var got = this.getItem('testcookie');
-      if (got === undefined) {
+      if (!got) {
         cookieEnabled = false;
       }
       this.removeItem('testcookie');
