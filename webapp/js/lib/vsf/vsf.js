@@ -20,16 +20,16 @@
      * vsf.test = vsf.test || {};
      * vsf.test.Test = Test;
      *
-     * The above code will be very compact and useful by using Util.provide:
+     * The above code will be very compact and useful by using vsf.provide:
      *
      * var Test = function() {};
-     * vsf.export('vsf.test.Test', Test);
+     * vsf.provide('vsf.test.Test', Test);
      *
      *
      * @param namespace the namespace with x.y.z format
      * @param module the associated object with the specified namespace
      */
-    export: function(namespace, module) {
+    provide: function(namespace, module) {
       if (!namespace || !module) {
         return;
       }
@@ -66,7 +66,7 @@
     }
   };
 
-  root['vsf'] = vsf;
+  root.vsf = vsf;
 
   //AMD
   if ( typeof define === "function") {

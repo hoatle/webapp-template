@@ -17,7 +17,8 @@
 (function() {
   'use strict';
 
-  var root = this;
+  var root = this,
+    require = root.require;
 
   // Require.js allows us to configure shortcut alias
   require.config({
@@ -77,6 +78,7 @@
   //will be implemented later when domReady.
   var updateModuleProgress = function(context, map, depMaps) {
     //when dom is not ready, do something more useful?
+    var console = root.console;
     if (console.log) {
       console.log('loading: ' + map.name + ' at ' + map.url);
     }
@@ -93,6 +95,7 @@
     domReady(function() {
       //re-implement updateModuleProgress here for domReady
       updateModuleProgress = function(context, map, depMaps) {
+        var document = root.document;
         var loadingStatusEl = document.getElementById('loading-status'),
           loadingModuleNameEl = document.getElementById('loading-module-name');
 
@@ -119,7 +122,7 @@
       'backbone',
       'Backbone.ModelBinder'
     ],
-    function() {
+    function($) {
 
       //fake 'has' if it's not available
       var has = root.has = root.has || function() {

@@ -44,7 +44,7 @@
     if (cookieEnabled) {
       this.setItem('testcookie', 'testcookie');
       var got = this.getItem('testcookie');
-      if (got == undefined) {
+      if (got === undefined) {
         cookieEnabled = false;
       }
       this.removeItem('testcookie');
@@ -150,6 +150,6 @@
   };
 
 
-  vsf.export('vsf.store.CookieStore', CookieStore);
+  vsf.provide('vsf.store.CookieStore', CookieStore);
 
 }).call(this, vsf);

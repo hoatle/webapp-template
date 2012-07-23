@@ -103,6 +103,6 @@
   };
 
 
-  vsf.export('vsf.store.LocalStorageStore', LocalStorageStore);
+  vsf.provide('vsf.store.LocalStorageStore', LocalStorageStore);
 
 }).call(this, vsf);

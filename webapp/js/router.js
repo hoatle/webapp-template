@@ -58,7 +58,7 @@ define(
        */
       setController: function(urlController, controllerName) {
         if (this.controllers[urlController]) {
-          $.log('Router#setController: override ' + this.controllers[urlController]);
+          $.warn('Router#setController: override ' + this.controllers[urlController]);
         }
         this.controllers[urlController] = controllerName;
       },
@@ -72,11 +72,11 @@ define(
        */
       dispatch: function(urlController, options) {
         if (!urlController) {
-          $.log('Router#dispatch: not valid urlController', urlController);
+          $.warn('Router#dispatch: not valid urlController', urlController);
           return;
         }
         options = options || {};
-        var fragment = _getRouteFragment.call(this, urlController, options['action'], options['params']);
+        var fragment = _getRouteFragment.call(this, urlController, options.action, options.params);
         this.navigate(fragment, options);
       },
 
@@ -124,7 +124,7 @@ define(
 
               processController(controllerInstance);
             }, function(err) { //not found matching controller
-              $.log('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
+              $.warn('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
               self.defaultController(_getRouteFragment.call(self, controller, action, params));
             }
           );

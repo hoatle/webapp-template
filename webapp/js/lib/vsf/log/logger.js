@@ -61,6 +61,6 @@
   };
 
 
-  vsf.export('vsf.log.Logger', Logger);
+  vsf.provide('vsf.log.Logger', Logger);
 
 }).call(this, vsf);

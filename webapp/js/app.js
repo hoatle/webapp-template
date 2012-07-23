@@ -29,5 +29,5 @@ define(['app-router'], function(AppRouter) {
 
   return {
     initialize: initialize
-  }
+  };
 });

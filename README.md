@@ -24,6 +24,8 @@ Web application structure template (layout), starting point for backbone + requi
 
 + You must run this command first to have node modules installed: ```make``` or ```make resolve```
 
++ Check style with jshint: ```make check-style```
+
 + Test the application: ```make test```
 
 + Run the application on development mode: ```make run-dev```
@@ -55,6 +57,7 @@ Web application structure template (layout), starting point for backbone + requi
 
 + clean
 + resolve (dependencies resolver)
++ check-style (check-style-common, check-style-vsf)
 + test (test-common-unit, test-vsf-unit)
 + package
 + install

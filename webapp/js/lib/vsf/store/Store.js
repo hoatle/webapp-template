@@ -70,6 +70,6 @@
     }
   };
 
-  vsf.export('vsf.store.Store', Store);
+  vsf.provide('vsf.store.Store', Store);
 
 }).call(this, vsf);

@@ -38,7 +38,7 @@ define(
        * @return {*}
        */
       beforeInitialize: function(options) {
-        return this
+        return this;
       },
 
       /**
@@ -63,16 +63,16 @@ define(
 
         _.bind(_ensureValid, this);
 
-        this.$container = this.$container || options['$container'];
-        this.model = this.model || options['model'] || new Backbone.Model();
-        this.appendable = this.appendable || options['appendable'];
+        this.$container = this.$container || options.$container;
+        this.model = this.model || options.model || new Backbone.Model();
+        this.appendable = this.appendable || options.appendable;
 
         if (this.textTemplate) {
           this.template = HandleBars.compile(this.textTemplate);
           var model = this.model.toJSON ? this.model.toJSON() : this.model;
           this.setElement(this.template(model));
         }
-        this.afterInitialize.apply(this, arguments)
+        this.afterInitialize.apply(this, arguments);
       },
 
       /**
@@ -152,7 +152,7 @@ define(
     function _ensureValid() {
       if (_.isNull(this.$container) || _.isNull(this.el)) {
         $.log('this.$container or this.el is null, invalid state');
-        return false
+        return false;
       }
       return true;
     }

@@ -5,13 +5,13 @@ $(document).ready(function() {
   module('vsf');
 
   test('APIs', function() {
-    ok($.isFunction(vsf.export), 'export');
+    ok($.isFunction(vsf.provide), 'provide');
     ok($.isFunction(vsf.raiseRequiredImplementationError), 'raiseRequiredImplementationError');
     ok($.isFunction(vsf.require), 'require');
     ok($.isFunction(vsf.register), 'register');
   });
 
-  test('export', function() {
+  test('provide', function() {
     ok(true);
   });
 
