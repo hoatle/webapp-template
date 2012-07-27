@@ -30,6 +30,9 @@ Web application structure template (layout), starting point for backbone + requi
 
 + Run the application on development mode: ```make run-dev```
 
++ Run the application on development mode with remote debug: ```make run-dev-debug```. See notice
+ on section: Remote debug the application with ```make run-dev-debug``` below.
+
 + Run this application on production mode: ```make run-prod```
 
 + Access application: http://localhost:8080
@@ -39,6 +42,18 @@ Web application structure template (layout), starting point for backbone + requi
 + Package the production application: ```make package```
 
 + Clean the production application build: ```make clean```
+
+## Remote debug the application with ```make run-dev-debug```
+
++ As the application uses 'node-supervisor' for hot-reloading, we need to have enable remote debug
+for node-supervisor. Follows the steps here to have node-debug:
+http://stackoverflow.com/questions/6468015/run-node-js-application-in-debug-with-supervisor
+
++ Then ```make run-dev-debug```
+
++ see more:
+https://groups.google.com/forum/?fromgroups#!topic/nodejs/qTlGXNYIy1U
+https://github.com/isaacs/node-supervisor/pull/50
 
 ## Develop web application for phonegap?
 * On Android:

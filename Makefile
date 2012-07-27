@@ -54,6 +54,9 @@ install: check-style package
 run-dev: resolve package
 	@NODE_ENV=dev ./node_modules/.bin/supervisor -i node_modules,test,webapp server.js
 
+run-dev-debug: resolve package
+	NODE_ENV=dev ./node_modules/.bin/supervisor -x node-debug -i node_modules,test,webapp server.js
+
 run-prod: install
 	@NODE_ENV=prod node server.js
 
