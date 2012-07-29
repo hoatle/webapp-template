@@ -10,7 +10,7 @@
  * or $().log(level, msg, obj) or shortcut: $().trace, $().info, $().warn, $().error.
  *
  */
-(function($) {
+(function ($) {
 
   'use strict';
 
@@ -20,19 +20,19 @@
    * @type {Object}
    */
   var LEVEL = {
-    trace: 0,
-    debug: 1,
-    info: 2,
-    warn: 3,
-    error: 4
+    TRACE: 0,
+    DEBUG: 1,
+    INFO: 2,
+    WARN: 3,
+    ERROR: 4
   };
 
   /**
-   * The default log level is 'trace'.
+   * The default log level is 'TRACE'.
    *
    * @type {Number}
    */
-  var allowedLevel = LEVEL.trace;
+  var allowedLevel = LEVEL.TRACE;
 
   /**
    * The main logging method.
@@ -82,16 +82,16 @@
   /**
    * Sets the log level for logging or not.
    * By default, all levels are logged.
-   * On production mode, need to change it to higher level, recommended: $.log.setLevel($.log.LEVEL.info);
+   * On production mode, need to change it to higher level, recommended: $.log.setLevel($.log.LEVEL.INFO);
    *
-   * @param newAllowedLevel recommend using constants of: $.log.LEVEL.trace to $.log.LEVEL.error
-   *                        can be string: 'trace', 'debug', 'info', 'warn' or 'error'.
-   *                        can be number between 0 (trace) to 4 (error).
+   * @param newAllowedLevel recommend using constants of: $.log.LEVEL.TRACE to $.log.LEVEL.ERROR
+   *                        can be string: 'TRACE', 'DEBUG', 'INFO', 'WARN' or 'ERROR'.
+   *                        can be number between 0 (TRACE) to 4 (ERROR).
    */
-  log.setLevel = function(newAllowedLevel) {
+  log.setLevel = function (newAllowedLevel) {
     if (isNaN(newAllowedLevel) && !isNaN(LEVEL[newAllowedLevel])) {
       allowedLevel = LEVEL[newAllowedLevel];
-    } else if (LEVEL.trace <= newAllowedLevel && newAllowedLevel <= LEVEL.error) {
+    } else if (LEVEL.TRACE <= newAllowedLevel && newAllowedLevel <= LEVEL.ERROR) {
       allowedLevel = newAllowedLevel;
     }
   };
@@ -104,9 +104,9 @@
   var methods = ['trace', 'debug', 'info', 'warn', 'error'];
 
   for (var i = 0, len = methods.length; i < len; i++) {
-    $[methods[i]] = $.fn[methods[i]] = (function(level) {
-      return function() {
-        if (LEVEL[level] >= allowedLevel) {
+    $[methods[i]] = $.fn[methods[i]] = (function (level) {
+      return function () {
+        if (LEVEL[level.toUpperCase()] >= allowedLevel) {
           var args = [].slice.call(arguments);
           args.splice(0, 0, level);
           return log.apply(this, args);
