@@ -140,6 +140,9 @@ define(
               methodAction.call(controllerInstance, params);
             } else if ($.isFunction(controllerInstance[action])) { //convention over configuration
               controllerInstance[action](params);
+            } else { //there is no-matched action, call default action
+              params = params ? action + '/' + params : action;
+              controllerInstance.index(params);
             }
           } else {
             //default action
