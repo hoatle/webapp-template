@@ -20,6 +20,11 @@
   var root = this,
     require = root.require;
 
+  //fake 'has' if it's not available
+  var has = root.has = root.has || function() {
+    return false;
+  };
+
   // Require.js allows us to configure shortcut alias
   require.config({
     paths: {
@@ -27,13 +32,18 @@
       'text': 'lib/require/plugins/text-2.0.1',
       'handlebars': 'lib/handlebars/handlebars-1.0.0.beta.6',
       'json2': 'lib/json/json2',
-      'jquery': 'lib/jquery/jquery-1.7.1',
+      'jquery': [
+        '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min',
+        'lib/jquery/jquery-1.7.1'
+      ],
       'underscore': 'lib/underscore/underscore-1.3.3',
       'backbone': 'lib/backbone/backbone-0.9.2',
       'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.0.4',
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
     },
+
+    waitSeconds: has('prod') ? 200 : 2, ////200 seconds for prod mode on bootstrap and 2 seconds for dev mode
 
     shim: {
 
@@ -123,11 +133,6 @@
       'Backbone.ModelBinder'
     ],
     function($) {
-
-      //fake 'has' if it's not available
-      var has = root.has = root.has || function() {
-        return false;
-      };
 
       //if it's prod mode, set log level to 'info'
       if (has('prod')) {
