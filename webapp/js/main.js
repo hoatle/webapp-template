@@ -89,7 +89,7 @@
   var updateModuleProgress = function(context, map, depMaps) {
     //when dom is not ready, do something more useful?
     var console = root.console;
-    if (console.log) {
+    if (console && console.log) {
       console.log('loading: ' + map.name + ' at ' + map.url);
     }
   };
