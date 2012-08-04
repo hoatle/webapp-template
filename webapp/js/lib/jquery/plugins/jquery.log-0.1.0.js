@@ -16,6 +16,7 @@
  */
 
 (function (factory) {
+  'use strict';
 
   if (typeof define === "function" && define.amd) {
     // AMD. Register as an anonymous module.
@@ -33,8 +34,6 @@
   }
 
 }).call(this, function($) {
-
-    'use strict';
 
     /**
      * All supported log levels.
@@ -78,10 +77,14 @@
           logMethod = console.log;
         }
 
+        //see more: http://stackoverflow.com/questions/5472938/does-ie9-support-console-log-and-is-it-a-real-function
+        var logger = Function.prototype.call.bind(logMethod, console);
+
+
         if (obj) {
-          logMethod.call(console, "[%s] %s: %o", level.toUpperCase(), msg, obj);
+          logger.call(console, "[%s] %s: %o", level.toUpperCase(), msg, obj);
         } else {
-          logMethod.call(console, "[%s] %s", level.toUpperCase(), msg);
+          logger.call(console, "[%s] %s", level.toUpperCase(), msg);
         }
 
         //stack tracing for the error log
