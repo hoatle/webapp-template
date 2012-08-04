@@ -29,7 +29,7 @@ define(
 
     var indexView;
 
-    var IndexController = Controller.extend({
+    return Controller.extend({
 
       initialize: function() {
         indexView = new IndexView({
@@ -42,6 +42,5 @@ define(
       }
     });
 
-    return IndexController;
   }
 );

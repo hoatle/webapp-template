@@ -27,7 +27,7 @@ define(
   ],
   function($, _, Backbone, Controller, HelloWorldView) {
 
-    var HelloWorldController = Controller.extend({
+    return Controller.extend({
 
       index: function() {
         var helloWorldView = new HelloWorldView({
@@ -40,6 +40,5 @@ define(
       }
     });
 
-    return HelloWorldController;
   }
 );

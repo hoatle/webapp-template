@@ -27,7 +27,7 @@ define(
   ],
   function($, _, Backbone, Controller, DefaultView) {
 
-    var DefaultController = Controller.extend({
+    return Controller.extend({
 
       index: function(params) {
         var defaultView = new DefaultView({
@@ -37,6 +37,5 @@ define(
       }
     });
 
-    return DefaultController;
   }
 );
