@@ -72,7 +72,7 @@ define(
 
       //the default action, should be overridden by controllers if there is no action matched.
       index: function(params) {
-        $.log('Controller#index is not overridden with params: ' + params);
+        $.error('Controller#index is not overridden with params: ' + params);
       }
 
     });
