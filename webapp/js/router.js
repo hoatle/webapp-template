@@ -19,15 +19,16 @@
  */
 define(
   [
+    'jquery',
     'underscore',
     'backbone',
     'controller/IndexController',
     'controller/DefaultController'
   ],
-  function (_, Backbone, IndexController, DefaultController) {
+  function ($, _, Backbone, IndexController, DefaultController) {
 
-    var indexController = new IndexController(),
-      defaultController = new DefaultController();
+    var indexController,
+      defaultController;
 
     /**
      * Holds controller instance for caching purpose.
@@ -38,7 +39,24 @@ define(
 
     };
 
-    var Router = Backbone.Router.extend({
+    /**
+     * Holds controller instance navigation stack for detecting back/forward button and workflow.
+     * By default, the stack hold 10 controller instances.
+     * This is configurable via new Router({maxNavigationRouteStackLength:Number}); option.
+     */
+    var navigationRouteStack = [];
+
+    function addToNavigationStack(controllerInstance) {
+      if (navigationRouteStack.length < (this.options.maxNavigationRouteStackLength || 10)) {
+        navigationRouteStack.push(controllerInstance);
+      } else {
+        navigationRouteStack.shift(controllerInstance);
+        navigationRouteStack.push(controllerInstance);
+      }
+
+    }
+
+    return Backbone.Router.extend({
       /**
        * Controller mapping from controller name on url to controller name on 'controller' folder.
        *
@@ -92,7 +110,7 @@ define(
       },
 
       initialize: function (options) {
-
+        this.options = options || {};
       },
 
       dispatchController: function(controller, action, params) {
@@ -111,7 +129,7 @@ define(
 
         if (cachedControllerInstance) {
 
-          processController(cachedControllerInstance);
+          processController.call(this, cachedControllerInstance);
 
         } else {
 
@@ -119,10 +137,14 @@ define(
             [
               'controller/' + controllerName
             ], function(Controller) {
-              var controllerInstance = new Controller();
+              var controllerInstance = new Controller({
+                name: controllerName,
+                router: self
+              });
               cachedControllers[controllerName] = controllerInstance;
 
-              processController(controllerInstance);
+              processController.call(self, controllerInstance);
+
             }, function(err) { //not found matching controller
               $.warn('AppRouter#dispatchController: Error for loading controller: ' + controller, err);
               self.defaultController(_getRouteFragment.call(self, controller, action, params));
@@ -132,6 +154,9 @@ define(
         }
 
         function processController(controllerInstance) {
+
+          addToNavigationStack.call(this, controllerInstance);
+
           if (action) {
             var methodAction = controllerInstance.actions[action];
             if (methodAction && $.isFunction(controllerInstance[methodAction])) {
@@ -152,13 +177,36 @@ define(
       },
 
       defaultController: function(params) {
+        if (!defaultController) {
+          defaultController = new DefaultController({
+            name: 'DefaultController',
+            router: this
+          });
+        }
+        addToNavigationStack.call(this, defaultController);
         defaultController.index(params);
       },
 
       indexController: function(params) {
+        if (!indexController) {
+          indexController = new IndexController({
+            name: 'IndexController',
+            router: this
+          });
+        }
+        addToNavigationStack.call(this, indexController);
         indexController.index(params);
       },
 
+      /**
+       * Gets the navigation route stack.
+       * This could be used for work flow determination
+       *
+       * @return {Array}
+       */
+      getNavigationRouteStack: function() {
+        return navigationRouteStack;
+      },
 
       //start the application
       start: function () {
@@ -177,5 +225,4 @@ define(
       return routeFragment;
     }
 
-    return Router;
   });
