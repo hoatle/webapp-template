@@ -43,7 +43,7 @@
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
     },
 
-    waitSeconds: has('prod') ? 200 : 2, ////200 seconds for prod mode on bootstrap and 2 seconds for dev mode
+    waitSeconds: has('prod') ? 2000 : 2, //2000 seconds for prod mode on bootstrap and 2 seconds for dev mode
 
     shim: {
 
