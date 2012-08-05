@@ -43,11 +43,19 @@ define(
      * Holds controller instance navigation stack for detecting back/forward button and workflow.
      * By default, the stack hold 10 controller instances.
      * This is configurable via new Router({maxNavigationRouteStackLength:Number}); option.
+     * To disable this facility, set maxNavigationRouteStackLength any value < 1
      */
     var navigationRouteStack = [];
 
     function addToNavigationStack(controllerInstance) {
-      if (navigationRouteStack.length < (this.options.maxNavigationRouteStackLength || 10)) {
+      var maxNavigationRouteStackLength = this.options.maxNavigationRouteStackLength;
+
+      //allow to disable
+      if (maxNavigationRouteStackLength < 1) {
+        return;
+      }
+
+      if (navigationRouteStack.length < (maxNavigationRouteStackLength || 10)) {
         navigationRouteStack.push(controllerInstance);
       } else {
         navigationRouteStack.shift(controllerInstance);
