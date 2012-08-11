@@ -102,7 +102,7 @@
   //used to pass configuration values to UglifyJS.
   //See https://github.com/mishoo/UglifyJS for the possible values.
   uglify: {
-    toplevel: true,
+    //toplevel: true, //See problem: https://github.com/hoatle/webapp-template/issues/27
     ascii_only: true,
     beautify: false,
     max_line_length: 10000
