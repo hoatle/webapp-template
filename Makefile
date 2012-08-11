@@ -16,12 +16,12 @@ clean:
 resolve:
 	npm install
 
-check-style-common: resolve
+check-style-common:
 	@echo "Check style for common stuff"
 	./node_modules/.bin/jshint ${CHECK_STYLE_COMMON}
 
 
-check-style-vsf: resolve
+check-style-vsf:
 	@echo "Check style for vsf stuff "
 	./node_modules/.bin/jshint ${CHECK_STYLE_VSF}
 
@@ -45,16 +45,16 @@ test: test-unit
 
 package: clean
 
-install: check-style package
+install: package
 	cp -rf webapp public
 	./node_modules/less/bin/lessc webapp/css/application.less webapp/css/application.css
 	./node_modules/.bin/r.js -o prod.build.js
 	find ./public -type f -name "*.less" -exec rm -f {} \;
 
-run-dev: resolve package
+run-dev: resolve check-style package
 	@NODE_ENV=dev ./node_modules/.bin/supervisor -i node_modules,test,webapp server.js
 
-run-dev-debug: resolve package
+run-dev-debug: resolve check-style package
 	@NODE_ENV=dev ./node_modules/.bin/supervisor -x node-debug -i node_modules,test,webapp server.js
 
 run-prod: install
