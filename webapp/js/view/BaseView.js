@@ -67,8 +67,11 @@ define(
         this.model = this.model || options.model || new Backbone.Model();
         this.appendable = this.appendable || options.appendable;
 
-        if (this.textTemplate) {
+        if (this.textTemplate && !this.template) {
           this.template = HandleBars.compile(this.textTemplate);
+        }
+
+        if (this.template) {
           var model = this.model.toJSON ? this.model.toJSON() : this.model;
           this.setElement(this.template(model));
         }
