@@ -24,7 +24,7 @@
     'handlebars': 'lib/handlebars/handlebars-1.0.rc.1',
     'json2': 'lib/json/json2',
     'jquery': 'lib/jquery/jquery-1.7.1',
-    'underscore': 'lib/underscore/underscore-1.3.3',
+    'underscore': 'lib/underscore/underscore-1.4.2',
     'backbone': 'lib/backbone/backbone-0.9.2',
     'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
     'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.0',
