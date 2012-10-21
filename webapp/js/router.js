@@ -40,28 +40,34 @@ define(
     };
 
     /**
-     * Holds controller instance navigation stack for detecting back/forward button and workflow.
-     * By default, the stack hold 10 controller instances.
-     * This is configurable via new Router({maxNavigationRouteStackLength:Number}); option.
-     * To disable this facility, set maxNavigationRouteStackLength any value < 1
+     * Holds previous and current controller instance for detecting back/forward button
      */
-    var navigationRouteStack = [];
+    var navigationStack = [];
 
     function addToNavigationStack(controllerInstance) {
-      var maxNavigationRouteStackLength = this.options.maxNavigationRouteStackLength;
-
-      //allow to disable
-      if (maxNavigationRouteStackLength < 1) {
-        return;
-      }
-
-      if (navigationRouteStack.length < (maxNavigationRouteStackLength || 10)) {
-        navigationRouteStack.push(controllerInstance);
+      if (navigationStack.length < (this.options.maxNavigationStackLength || 10)) {
+        navigationStack.push(controllerInstance);
       } else {
-        navigationRouteStack.shift(controllerInstance);
-        navigationRouteStack.push(controllerInstance);
+        navigationStack.shift(controllerInstance);
+        navigationStack.push(controllerInstance);
       }
 
+      if (navigationStack.length > 1) {
+        //set isBackNavigated
+        var  controllerName = controllerInstance.name,
+          controllerFlowInfo = this.findControllerFlowInfo(controllerName);
+
+        $.debug('router::addNavigationStack | controllerFlowInfo', controllerFlowInfo);
+
+        var previousNavigationStackName = navigationStack[navigationStack.length - 2].name;
+
+        if (controllerFlowInfo.previous.name === previousNavigationStackName) {
+          $.debug('router::addNavigationStack | controllerFlowInfo.previous.name matched', controllerFlowInfo.previous);
+          controllerInstance.isBackNavigated = false;
+        } else {
+          controllerInstance.isBackNavigated = true;
+        }
+      }
     }
 
     return Backbone.Router.extend({
@@ -72,6 +78,38 @@ define(
        */
       controllers: {
 
+      },
+
+      controllerFlow: {
+        name: 'IndexController'
+      },
+
+      findControllerFlowInfo: function(controllerName) {
+
+        var previousElement = {}, foundElement = {};
+
+        function searchTree(element, matchingName) {
+          if (element.name === matchingName) {
+            foundElement = element;
+          } else if (element.children) {
+            var result;
+            for (var i = 0, len = element.children.length; i < len; i++) {
+              previousElement = element;
+              result = searchTree(element.children[i], matchingName);
+              if (result.found.name) {
+                break;
+              }
+            }
+            return result;
+          }
+
+          return {
+            'previous': previousElement,
+            'found': foundElement
+          };
+        }
+
+        return searchTree(this.controllerFlow, controllerName);
       },
 
       /**
@@ -162,8 +200,9 @@ define(
         }
 
         function processController(controllerInstance) {
-
           addToNavigationStack.call(this, controllerInstance);
+
+          controllerInstance.trigger('actionStart');
 
           if (action) {
             var methodAction = controllerInstance.actions[action];
@@ -181,6 +220,8 @@ define(
             //default action
             controllerInstance.index();
           }
+
+          controllerInstance.trigger('actionFinish');
         }
       },
 
@@ -192,7 +233,9 @@ define(
           });
         }
         addToNavigationStack.call(this, defaultController);
+        defaultController.trigger('actionStart');
         defaultController.index(params);
+        defaultController.trigger('actionFinish');
       },
 
       indexController: function(params) {
@@ -203,7 +246,9 @@ define(
           });
         }
         addToNavigationStack.call(this, indexController);
+        indexController.trigger('actionStart');
         indexController.index(params);
+        indexController.trigger('actionFinish');
       },
 
       /**
@@ -213,7 +258,7 @@ define(
        * @return {Array}
        */
       getNavigationRouteStack: function() {
-        return navigationRouteStack;
+        return navigationStack;
       },
 
       //start the application
