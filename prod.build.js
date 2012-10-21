@@ -27,7 +27,7 @@
     'underscore': 'lib/underscore/underscore-1.4.2',
     'backbone': 'lib/backbone/backbone-0.9.2',
     'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
-    'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.0',
+    'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
     'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
   },
   shim: {
