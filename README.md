@@ -127,6 +127,9 @@ Error: listen EADDRINUSE
 
 => You need to change the default port (8080) on server.js to another not used port and it should work.
 
+## Mobile Web App Template
+There is [mobile-webapp-template](https://github.com/hoatle/mobile-webapp-template) project basing
+on this project which is intended for mobile web application development.
 
 ## License
 <pre>
